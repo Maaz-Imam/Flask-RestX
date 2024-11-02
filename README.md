@@ -21,9 +21,5 @@ This mini-project is connected to SQLite3 which serves as the database.
 
 ### Sample Bash commands for querying the database:
 - Posting to Shelf table:
-$ curl -X 'POST'   'http://127.0.0.1:5000/Warehouse/shelf'   -H 'accept: application/json'   -H 'Content-Type: application/json'   -d '{      
-  "manager": "Ali",
-  "location": "top-left"
-}'
-
 ![image](https://github.com/user-attachments/assets/176a784a-88cc-4abb-85e1-0e7fee16befc)
+$ curl -X 'POST'   'http://127.0.0.1:5000/Warehouse/shelf'   -H 'accept: application/json'   -H 'Content-Type: application/json'   -d '{"manager": "Ali, "location": "top-left"}'

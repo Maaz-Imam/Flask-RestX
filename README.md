@@ -24,6 +24,7 @@ This mini-project is connected to SQLite3 which serves as the database.
 ![image](https://github.com/user-attachments/assets/176a784a-88cc-4abb-85e1-0e7fee16befc)
 
 - Retreiving from Shelf table:
+  
 Entire table:
 
 ![image](https://github.com/user-attachments/assets/29423c42-cd6b-47f5-b1f2-29faca6d44d9)

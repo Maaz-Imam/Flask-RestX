@@ -39,7 +39,7 @@ Specific row:
 
 - Retreiving from Item table:
 
-Entire table:
+-- Entire table:
 
 ![image](https://github.com/user-attachments/assets/e2da530c-bf68-4d7b-b529-674d712946e7)
 

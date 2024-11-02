@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9cab0de3-8b73-4448-8c0c-59b7b99f2444)# Flask-RestX
+# Flask-RestX
 Testing API handling using Flask RestX
 
 This mini-project is connected to SQLite3 which serves as the database.

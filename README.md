@@ -25,3 +25,5 @@ $ curl -X 'POST'   'http://127.0.0.1:5000/Warehouse/shelf'   -H 'accept: applica
   "manager": "Ali",
   "location": "top-left"
 }'
+
+![image](https://github.com/user-attachments/assets/176a784a-88cc-4abb-85e1-0e7fee16befc)

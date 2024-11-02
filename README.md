@@ -22,9 +22,13 @@ This mini-project is connected to SQLite3 which serves as the database.
 ### Sample Bash commands for querying the database:
 - Posting to Shelf table:
 ![image](https://github.com/user-attachments/assets/176a784a-88cc-4abb-85e1-0e7fee16befc)
-$ curl http://127.0.0.1:5000/Warehouse/shelf -H 'accept: application/json'   -H 'Content-Type: application/json'   -d '{"manager": "Ali, "location": "top-left"}' -X POST
+
+- Retreiving from Shelf table:
+- Entire table:
+![image](https://github.com/user-attachments/assets/29423c42-cd6b-47f5-b1f2-29faca6d44d9)
+- Specific row:
+![image](https://github.com/user-attachments/assets/dc520cd7-6f4b-4566-a123-5a55e2e9e44a)
 
 
 - Posting to Item table:
 ![image](https://github.com/user-attachments/assets/f6d1ead7-b272-4b72-b188-88a57fae9aaa)
-$ curl http://localhost:5000/Warehouse/item -H 'accept: application/json'   -H 'Content-Type: application/json' -d '{"name": "bottle", "price": "250", "shelf_id": "1"}' -X POST

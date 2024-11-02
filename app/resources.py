@@ -1,50 +1,91 @@
 from flask import request
 from flask_restx import Resource, Namespace 
 
-from api_models import item_input_model, shelf_model, shelf_input_model
+from api_models import item_input_model, item_model_a, item_update_model, shelf_model, shelf_input_model
+from app_init import db
+from models import Shelf, Item
 
 wh = Namespace("Warehouse")
 
-shelf = []
 items = []
 
 @wh.route('/shelf')
-class Shelf(Resource):
+class Shelf_route(Resource):
     @wh.marshal_with(shelf_model)
     def get(self):
         shelf_id = request.args.get('shelf_id', type=int)
         if shelf_id is None:
-            return shelf
-        return [item for item in shelf if item["shelf_id"] == shelf_id][0]
+            shelves= Shelf.query.all()
+            for shelf in shelves:
+                print(shelf.shelf_id, shelf.manager, shelf.location)
+            return Shelf.query.all()
+        return Shelf.query.get(shelf_id)
     
     @wh.expect(shelf_input_model)
     @wh.marshal_with(shelf_model)
     def post(self):
-        shelf_id = len(shelf) + 1
-        shelf_data = wh.payload
-        shelf_data['shelf_id'] = shelf_id
-        shelf_data['items'] = []
-        shelf.append(shelf_data) 
-        return shelf_data, 201
+        shelf = Shelf(
+            manager=wh.payload['manager'],
+            location=wh.payload['location']
+        )
+        db.session.add(shelf)
+        db.session.commit()
+        return shelf, 201
+    
+    @wh.expect(shelf_input_model)
+    @wh.marshal_with(shelf_model)
+    def put(self):
+        shelf_id = request.args.get('shelf_id', type=int)
+        shelf = Shelf.query.get(shelf_id)
+        shelf.manager = wh.payload["manager"]
+        db.session.commit()
+        return shelf
 
-@wh.route('/item/<int:item_id>')
-class Item(Resource):
-    @wh.marshal_with(item_input_model)
-    def get(self, item_id):
-        return [item for item in items if item["item_id"] == item_id][0]
+    def delete(self):
+        shelf_id = request.args.get('shelf_id', type=int)
+        shelf = Shelf.query.get(shelf_id)
+        db.session.delete(shelf)
+        db.session.commit()
+        return {}, 204
+
+
+@wh.route('/item')
+class Item_route(Resource):
+    @wh.marshal_with(item_model_a)
+    def get(self):
+        item_id = request.args.get('item_id', type=int)
+        if item_id is None:
+            items = Item.query.all()
+            for item in items:
+                print(item.item_id, item.name, item.price, item.shelf_id)
+            return Item.query.all()
+        return Item.query.get(item_id)
     
     @wh.expect(item_input_model)
-    @wh.marshal_with(item_input_model)
-    def post(self, item_id):
-        item_data = wh.payload
-        item_data['item_id'] = item_id
-        items.append(item_data)
-        shelf_id = int(item_data['shelf_id'])
-        for target_shelf in shelf:
-            if target_shelf['shelf_id'] == shelf_id:
-                target_shelf['items'].append({
-                "item_id": item_data["item_id"],
-                "name": item_data["name"],
-                "price": item_data["price"]
-            }) 
-        return item_data, 201
+    @wh.marshal_with(item_model_a)
+    def post(self):
+        item = Item(
+            name=wh.payload['name'],
+            price=wh.payload['price'],
+            shelf_id=wh.payload['shelf_id']
+        )
+        db.session.add(item)
+        db.session.commit()
+        return item, 201
+    
+    @wh.expect(item_update_model)
+    @wh.marshal_with(item_model_a)
+    def put(self):
+        item_id = request.args.get('item_id', type=int)
+        item = Item.query.get(item_id)
+        item.price = wh.payload['price']
+        item.shelf_id = wh.payload['shelf_id']
+        db.session.commit()
+        return item
+
+    def delete(self):
+        item_id = request.args.get('item_id', type=int)
+        item = Item.query.get(item_id)
+        db.session.delete(item)
+        db.session.commit()
+        return {}, 204

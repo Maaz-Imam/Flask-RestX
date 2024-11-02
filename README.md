@@ -26,6 +26,7 @@ This mini-project is connected to SQLite3 which serves as the database.
 - Retreiving from Shelf table:
 Entire table:
 ![image](https://github.com/user-attachments/assets/29423c42-cd6b-47f5-b1f2-29faca6d44d9)
+
 Specific row:
 ![image](https://github.com/user-attachments/assets/dc520cd7-6f4b-4566-a123-5a55e2e9e44a)
 

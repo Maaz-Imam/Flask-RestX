@@ -8,3 +8,5 @@ The APIs can:
 - GET list of all shelves and items
 - GET data of specific item
 - When an item is POST-ed it is automatically added to it's corresponding Shelf list.
+
+This mini-project is connected to SQLlite3 which serves as the database.

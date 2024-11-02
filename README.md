@@ -1,4 +1,4 @@
-# Flask-RestX
+![image](https://github.com/user-attachments/assets/9cab0de3-8b73-4448-8c0c-59b7b99f2444)# Flask-RestX
 Testing API handling using Flask RestX
 
 This mini-project is connected to SQLite3 which serves as the database.
@@ -36,3 +36,15 @@ Specific row:
 
 - Posting to Item table:
 ![image](https://github.com/user-attachments/assets/f6d1ead7-b272-4b72-b188-88a57fae9aaa)
+
+- Retreiving from Item table:
+
+Entire table:
+
+![image](https://github.com/user-attachments/assets/e2da530c-bf68-4d7b-b529-674d712946e7)
+
+Specific row:
+
+![image](https://github.com/user-attachments/assets/e38edf15-f0cd-4147-90f8-ef66bd24a6ac)
+
+

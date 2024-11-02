@@ -18,3 +18,10 @@ This mini-project is connected to SQLite3 which serves as the database.
 - GET list of all shelves and items
 - GET data of specific item
 - When an item is POST-ed it is automatically added to it's corresponding Shelf list.
+
+### Sample Bash commands for querying the database:
+- Posting to Shelf table:
+$ curl -X 'POST'   'http://127.0.0.1:5000/Warehouse/shelf'   -H 'accept: application/json'   -H 'Content-Type: application/json'   -d '{      
+  "manager": "Ali",
+  "location": "top-left"
+}'
